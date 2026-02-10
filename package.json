@@ -1,5 +1,5 @@
 {
-  "name": "strapi-plugin-opening-hours",
+  "name": "@opkod-france/strapi-plugin-opening-hours",
   "version": "1.0.0",
   "description": "A Strapi custom field plugin for managing business opening hours with split shifts and special/holiday hours",
   "license": "MIT",
