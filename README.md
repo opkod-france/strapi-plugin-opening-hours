@@ -9,32 +9,45 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/npm/v/@opkod-france/strapi-plugin-opening-hours" alt="npm version" /></a>
-  <a href="https://github.com/opkod-france/strapi-plugin-opening-hours/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@opkod-france/strapi-plugin-opening-hours" alt="license" /></a>
-  <a href="https://www.npmjs.com/package/@opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/npm/dm/@opkod-france/strapi-plugin-opening-hours" alt="downloads" /></a>
+  <a href="https://www.npmjs.com/package/@opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/npm/v/@opkod-france/strapi-plugin-opening-hours?style=flat-square&color=4945FF" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/@opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/npm/dm/@opkod-france/strapi-plugin-opening-hours?style=flat-square" alt="npm downloads" /></a>
+  <a href="https://github.com/opkod-france/strapi-plugin-opening-hours/blob/main/LICENSE"><img src="https://img.shields.io/github/license/opkod-france/strapi-plugin-opening-hours?style=flat-square" alt="license" /></a>
+  <a href="https://github.com/opkod-france/strapi-plugin-opening-hours/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/opkod-france/strapi-plugin-opening-hours/release.yml?style=flat-square&label=release" alt="release status" /></a>
+  <a href="https://github.com/opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/github/stars/opkod-france/strapi-plugin-opening-hours?style=flat-square" alt="GitHub stars" /></a>
+</p>
+
+<p align="center">
+  <a href="https://img.shields.io/badge/strapi-v5-2F2E8B?style=flat-square&logo=strapi&logoColor=white"><img src="https://img.shields.io/badge/strapi-v5-2F2E8B?style=flat-square&logo=strapi&logoColor=white" alt="Strapi v5" /></a>
+  <a href="https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white"><img src="https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js >= 18" /></a>
+  <a href="https://img.shields.io/badge/schema.org-compatible-0C479D?style=flat-square&logo=schema.org&logoColor=white"><img src="https://img.shields.io/badge/schema.org-compatible-0C479D?style=flat-square" alt="Schema.org compatible" /></a>
+  <a href="https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white"><img src="https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" /></a>
 </p>
 
 ---
 
-The JSON output follows [Schema.org OpeningHoursSpecification](https://schema.org/OpeningHoursSpecification) conventions for SEO interoperability.
+## Overview
+
+This plugin adds an **Opening Hours** custom field to Strapi's Content-Type Builder. The field stores structured JSON following [Schema.org OpeningHoursSpecification](https://schema.org/OpeningHoursSpecification) conventions, making it ready for SEO and structured data integration.
 
 ## Features
 
-- **Weekly schedule** with per-day open/closed toggle
+- **Weekly schedule** — per-day open/closed toggle with time pickers
 - **Split shifts** — multiple time slots per day (e.g. lunch + dinner)
-- **Copy hours** from one day to weekdays or all days
-- **Special/holiday hours** with date ranges and labels
-- **Preview tab** for read-only formatted display
-- **Schema.org compatible** JSON structure
-- Built entirely with **Strapi Design System** components
+- **Copy hours** — replicate one day's schedule to weekdays or all days
+- **Special/holiday hours** — named overrides with date ranges
+- **Preview tab** — read-only formatted summary of the full schedule
+- **Schema.org compatible** — JSON output follows `OpeningHoursSpecification`
+- **Strapi Design System** — built entirely with native Strapi components
 
-## Installation
+## Quick Start
+
+### 1. Install
 
 ```bash
 yarn add @opkod-france/strapi-plugin-opening-hours
 ```
 
-Add the plugin to your Strapi config:
+### 2. Enable the plugin
 
 ```typescript
 // config/plugins.ts
@@ -45,14 +58,14 @@ export default () => ({
 });
 ```
 
-Rebuild your Strapi admin panel:
+### 3. Rebuild and start
 
 ```bash
 yarn build
 yarn develop
 ```
 
-## Usage
+### 4. Add the field
 
 1. Open the **Content-Type Builder**
 2. Add a new custom field and select **Opening Hours**
@@ -60,6 +73,8 @@ yarn develop
 4. The field appears in the content editor with three tabs: **Regular Hours**, **Special Hours**, and **Preview**
 
 ## JSON Structure
+
+The field stores a single JSON object with two arrays:
 
 ```json
 {
@@ -90,16 +105,16 @@ yarn develop
 }
 ```
 
-**Fields:**
+### Field Reference
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `dayOfWeek` | string | Schema.org day name (Monday–Sunday) |
-| `isOpen` | boolean | Whether the business is open |
-| `timeSlots` | array | Time ranges; empty when closed |
-| `opens` / `closes` | string | HH:MM in 24-hour format |
-| `label` | string | Name for special hours entry |
-| `validFrom` / `validThrough` | string | ISO date (YYYY-MM-DD) |
+| `dayOfWeek` | `string` | Schema.org day name (`Monday`–`Sunday`) |
+| `isOpen` | `boolean` | Whether the business is open |
+| `timeSlots` | `array` | Time ranges; empty when closed |
+| `opens` / `closes` | `string` | Time in `HH:MM` 24-hour format |
+| `label` | `string` | Name for a special hours entry |
+| `validFrom` / `validThrough` | `string` | ISO date (`YYYY-MM-DD`) |
 
 ## Development
 
@@ -120,7 +135,7 @@ yarn test
 yarn test:watch
 ```
 
-### Local development with a Strapi project
+### Local Development
 
 Link the plugin for local testing:
 
@@ -132,7 +147,7 @@ yarn link
 yarn link @opkod-france/strapi-plugin-opening-hours
 ```
 
-Add the plugin with an explicit resolve path in `config/plugins.ts`:
+Then add an explicit resolve path in `config/plugins.ts`:
 
 ```typescript
 export default () => ({
@@ -145,9 +160,18 @@ export default () => ({
 
 ## Requirements
 
-- Strapi v5
-- Node.js 18+
+| Dependency | Version |
+|------------|---------|
+| Strapi | `>= 5.0.0` |
+| Node.js | `>= 18` |
+| React | `17.x` or `18.x` |
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+This project uses [conventional commits](https://www.conventionalcommits.org/) and [semantic-release](https://github.com/semantic-release/semantic-release) for automated versioning.
 
 ## License
 
-MIT
+[MIT](LICENSE) &copy; [Opkod France](https://github.com/opkod-france)
