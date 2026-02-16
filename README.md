@@ -1,6 +1,20 @@
-# Strapi Plugin: Opening Hours
+<p align="center">
+  <img src="assets/logo.png" alt="Opening Hours Plugin" width="128" />
+</p>
 
-A custom field plugin for [Strapi v5](https://strapi.io) that provides a rich UI for managing business opening hours, split shifts, and special/holiday schedules.
+<h1 align="center">Strapi Plugin: Opening Hours</h1>
+
+<p align="center">
+  A custom field plugin for <a href="https://strapi.io">Strapi v5</a> that provides a rich UI for managing business opening hours, split shifts, and special/holiday schedules.
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/npm/v/@opkod-france/strapi-plugin-opening-hours" alt="npm version" /></a>
+  <a href="https://github.com/opkod-france/strapi-plugin-opening-hours/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@opkod-france/strapi-plugin-opening-hours" alt="license" /></a>
+  <a href="https://www.npmjs.com/package/@opkod-france/strapi-plugin-opening-hours"><img src="https://img.shields.io/npm/dm/@opkod-france/strapi-plugin-opening-hours" alt="downloads" /></a>
+</p>
+
+---
 
 The JSON output follows [Schema.org OpeningHoursSpecification](https://schema.org/OpeningHoursSpecification) conventions for SEO interoperability.
 
@@ -17,7 +31,7 @@ The JSON output follows [Schema.org OpeningHoursSpecification](https://schema.or
 ## Installation
 
 ```bash
-npm install strapi-plugin-opening-hours
+yarn add @opkod-france/strapi-plugin-opening-hours
 ```
 
 Add the plugin to your Strapi config:
@@ -34,8 +48,8 @@ export default () => ({
 Rebuild your Strapi admin panel:
 
 ```bash
-npm run build
-npm run develop
+yarn build
+yarn develop
 ```
 
 ## Usage
@@ -91,19 +105,19 @@ npm run develop
 
 ```bash
 # Install dependencies
-npm install
+yarn install
 
 # Build the plugin
-npm run build
+yarn build
 
 # Watch mode (rebuilds on changes)
-npm run watch
+yarn watch
 
 # Run tests
-npm test
+yarn test
 
 # Run tests in watch mode
-npm run test:watch
+yarn test:watch
 ```
 
 ### Local development with a Strapi project
@@ -112,10 +126,10 @@ Link the plugin for local testing:
 
 ```bash
 # In the plugin directory
-npm link
+yarn link
 
 # In your Strapi project
-npm link strapi-plugin-opening-hours
+yarn link @opkod-france/strapi-plugin-opening-hours
 ```
 
 Add the plugin with an explicit resolve path in `config/plugins.ts`:
@@ -124,7 +138,7 @@ Add the plugin with an explicit resolve path in `config/plugins.ts`:
 export default () => ({
   'opening-hours': {
     enabled: true,
-    resolve: './node_modules/strapi-plugin-opening-hours',
+    resolve: './node_modules/@opkod-france/strapi-plugin-opening-hours',
   },
 });
 ```
