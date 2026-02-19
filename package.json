@@ -3,6 +3,23 @@
   "version": "1.0.0",
   "description": "A Strapi custom field plugin for managing business opening hours with split shifts and special/holiday hours",
   "license": "MIT",
+  "homepage": "https://github.com/opkod-france/strapi-plugin-opening-hours#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opkod-france/strapi-plugin-opening-hours.git"
+  },
+  "bugs": {
+    "url": "https://github.com/opkod-france/strapi-plugin-opening-hours/issues"
+  },
+  "keywords": [
+    "strapi",
+    "strapi-plugin",
+    "strapi-v5",
+    "opening-hours",
+    "custom-field",
+    "schema-org",
+    "business-hours"
+  ],
   "exports": {
     "./strapi-admin": {
       "types": "./dist/admin/src/index.d.ts",
