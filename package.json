@@ -55,7 +55,7 @@
   "dependencies": {
     "@strapi/design-system": "^2.0.0",
     "@strapi/icons": "^2.0.0",
-    "react-intl": "^6.0.0"
+    "react-intl": "^7.1.14"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
