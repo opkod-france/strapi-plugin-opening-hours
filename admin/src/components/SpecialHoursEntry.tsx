@@ -12,10 +12,21 @@ import {
 } from '@strapi/design-system';
 import { Trash, Plus } from '@strapi/icons';
 import { useIntl } from 'react-intl';
+import { styled } from 'styled-components';
 
 import type { SpecialHoursEntry as SpecialHoursEntryType, TimeSlot } from '../types';
 import { getTrad } from '../utils/getTrad';
 import { TimeSlotRow } from './TimeSlotRow';
+
+const EntryCard = styled(Box)<{ $isOpen: boolean }>`
+  border-left: 3px solid ${({ $isOpen, theme }) =>
+    $isOpen ? theme.colors.success500 : theme.colors.danger500};
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadows.filterShadow};
+  }
+`;
 
 interface SpecialHoursEntryProps {
   entry: SpecialHoursEntryType;
@@ -41,14 +52,15 @@ export const SpecialHoursEntryComponent = ({
   const { formatMessage } = useIntl();
 
   return (
-    <Box
-      padding={4}
+    <EntryCard
+      $isOpen={entry.isOpen}
+      padding={3}
       hasRadius
       background="neutral0"
       borderColor="neutral200"
       shadow="filterShadow"
     >
-      <Flex direction="column" gap={3}>
+      <Flex direction="column" gap={2}>
         {/* Header */}
         <Flex justifyContent="space-between" alignItems="center">
           <Flex gap={2} alignItems="center">
@@ -172,6 +184,6 @@ export const SpecialHoursEntryComponent = ({
           )}
         </Flex>
       </Flex>
-    </Box>
+    </EntryCard>
   );
 };

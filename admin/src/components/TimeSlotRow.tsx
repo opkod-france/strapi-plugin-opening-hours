@@ -35,7 +35,7 @@ export const TimeSlotRow = ({
         size="S"
       />
       <Typography variant="pi" textColor="neutral500">
-        to
+        {formatMessage({ id: getTrad('timeSlot.to'), defaultMessage: 'to' })}
       </Typography>
       <TimePicker
         aria-label={`${formatMessage({ id: getTrad('closes'), defaultMessage: 'Closes' })} ${slotIndex + 1}`}

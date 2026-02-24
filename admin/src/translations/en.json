@@ -39,5 +39,9 @@
   "preview.regularHours": "Regular Hours",
   "preview.specialHours": "Special Hours",
   "preview.noSpecialHours": "No special hours defined",
-  "preview.allDay": "Open all day"
+  "preview.allDay": "Open all day",
+  "timeSlot.to": "to",
+  "specialHours.emptyTitle": "No special hours yet",
+  "specialHours.emptyDescription": "Add special hours for holidays, seasonal changes, or one-time events.",
+  "cancel": "Cancel"
 }

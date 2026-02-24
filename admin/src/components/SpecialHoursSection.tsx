@@ -1,6 +1,7 @@
 import { Flex, Box, Button, Typography } from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
+import { Plus, Calendar } from '@strapi/icons';
 import { useIntl } from 'react-intl';
+import { styled } from 'styled-components';
 
 import type { OpeningHoursValue, SpecialHoursEntry, TimeSlot } from '../types';
 import {
@@ -13,6 +14,13 @@ import {
 } from '../utils/openingHoursActions';
 import { getTrad } from '../utils/getTrad';
 import { SpecialHoursEntryComponent } from './SpecialHoursEntry';
+
+const IconCircle = styled(Flex)`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.neutral200};
+`;
 
 interface SpecialHoursSectionProps {
   value: OpeningHoursValue;
@@ -53,7 +61,7 @@ export const SpecialHoursSection = ({ value, onChange, disabled }: SpecialHoursS
   };
 
   return (
-    <Flex direction="column" gap={3}>
+    <Flex direction="column" gap={2}>
       {value.specialHours.length === 0 && (
         <Box
           padding={6}
@@ -61,12 +69,23 @@ export const SpecialHoursSection = ({ value, onChange, disabled }: SpecialHoursS
           background="neutral100"
           style={{ textAlign: 'center' }}
         >
-          <Typography variant="omega" textColor="neutral500">
-            {formatMessage({
-              id: getTrad('preview.noSpecialHours'),
-              defaultMessage: 'No special hours defined',
-            })}
-          </Typography>
+          <Flex direction="column" alignItems="center" gap={2}>
+            <IconCircle justifyContent="center" alignItems="center">
+              <Calendar width={20} height={20} />
+            </IconCircle>
+            <Typography variant="omega" fontWeight="bold" textColor="neutral600">
+              {formatMessage({
+                id: getTrad('specialHours.emptyTitle'),
+                defaultMessage: 'No special hours yet',
+              })}
+            </Typography>
+            <Typography variant="pi" textColor="neutral500">
+              {formatMessage({
+                id: getTrad('specialHours.emptyDescription'),
+                defaultMessage: 'Add special hours for holidays, seasonal changes, or one-time events.',
+              })}
+            </Typography>
+          </Flex>
         </Box>
       )}
 

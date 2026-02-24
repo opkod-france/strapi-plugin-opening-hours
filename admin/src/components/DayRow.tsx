@@ -11,23 +11,30 @@ interface DayRowProps {
   day: DaySchedule;
   dayIndex: number;
   disabled?: boolean;
+  isWeekend: boolean;
   onToggle: (dayIndex: number, isOpen: boolean) => void;
   onUpdateSlot: (dayIndex: number, slotIndex: number, field: keyof TimeSlot, time: string) => void;
   onAddSlot: (dayIndex: number) => void;
   onRemoveSlot: (dayIndex: number, slotIndex: number) => void;
 }
 
-const DayRowContainer = styled(Flex)<{ $isOpen: boolean }>`
-  transition: opacity 0.15s ease;
+const DayRowContainer = styled(Flex)<{ $isOpen: boolean; $isWeekend: boolean }>`
+  transition: opacity 0.15s ease, background-color 0.15s ease;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0.55)};
+  border-left: 3px solid ${({ $isOpen, theme }) =>
+    $isOpen ? theme.colors.success500 : theme.colors.neutral300};
+  background-color: ${({ $isWeekend, theme }) =>
+    $isWeekend ? theme.colors.neutral100 : 'transparent'};
 
   &:hover {
     opacity: 1;
+    background-color: ${({ $isWeekend, theme }) =>
+      $isWeekend ? theme.colors.neutral200 : theme.colors.neutral100};
   }
 `;
 
 const DayLabel = styled(Typography)`
-  min-width: 36px;
+  min-width: 32px;
   user-select: none;
 `;
 
@@ -35,6 +42,7 @@ export const DayRow = ({
   day,
   dayIndex,
   disabled,
+  isWeekend,
   onToggle,
   onUpdateSlot,
   onAddSlot,
@@ -50,12 +58,13 @@ export const DayRow = ({
   return (
     <DayRowContainer
       $isOpen={day.isOpen}
+      $isWeekend={isWeekend}
       gap={3}
       alignItems="center"
-      paddingTop={2}
-      paddingBottom={2}
-      paddingLeft={3}
-      paddingRight={3}
+      paddingTop={1}
+      paddingBottom={1}
+      paddingLeft={2}
+      paddingRight={2}
       wrap="wrap"
     >
       <Checkbox

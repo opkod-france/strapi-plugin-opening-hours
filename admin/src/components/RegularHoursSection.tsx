@@ -48,16 +48,18 @@ export const RegularHoursSection = ({ value, onChange, disabled }: RegularHoursS
     <Box>
       {value.regularHours.map((day, index) => (
         <React.Fragment key={day.dayOfWeek}>
+          {index === 5 && <Box paddingTop={1} paddingBottom={1}><Divider /></Box>}
           <DayRow
             day={day}
             dayIndex={index}
             disabled={disabled}
+            isWeekend={index >= 5}
             onToggle={handleToggle}
             onUpdateSlot={handleUpdateSlot}
             onAddSlot={handleAddSlot}
             onRemoveSlot={handleRemoveSlot}
           />
-          {index < value.regularHours.length - 1 && <Divider />}
+          {index < value.regularHours.length - 1 && index !== 4 && <Divider />}
         </React.Fragment>
       ))}
       <CopyHoursMenu

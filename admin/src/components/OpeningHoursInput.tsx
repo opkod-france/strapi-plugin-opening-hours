@@ -85,7 +85,7 @@ export const OpeningHoursInput = React.forwardRef<HTMLDivElement, OpeningHoursIn
                 </Tabs.List>
               </Box>
 
-              <Box padding={3}>
+              <Box padding={2}>
                 <Tabs.Content value="regular">
                   <RegularHoursSection
                     value={value}

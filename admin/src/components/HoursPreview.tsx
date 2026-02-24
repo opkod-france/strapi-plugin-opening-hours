@@ -1,4 +1,5 @@
 import { Box, Flex, Typography, Badge, Divider } from '@strapi/design-system';
+import { Information } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
@@ -13,8 +14,25 @@ const formatSlots = (slots: TimeSlot[]): string => {
   return slots.map((slot) => `${slot.opens} – ${slot.closes}`).join(', ');
 };
 
-const PreviewRow = styled(Flex)`
-  &:nth-child(even) {
+const PreviewRow = styled(Flex)<{ $isOpen: boolean; $isWeekend: boolean }>`
+  border-left: 3px solid ${({ $isOpen, theme }) =>
+    $isOpen ? theme.colors.success500 : theme.colors.neutral300};
+  background-color: ${({ $isWeekend, theme }) =>
+    $isWeekend ? theme.colors.neutral100 : 'transparent'};
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: ${({ $isWeekend, theme }) =>
+      $isWeekend ? theme.colors.neutral200 : theme.colors.neutral100};
+  }
+`;
+
+const SpecialPreviewRow = styled(Flex)<{ $isOpen: boolean }>`
+  border-left: 3px solid ${({ $isOpen, theme }) =>
+    $isOpen ? theme.colors.success500 : theme.colors.danger500};
+  transition: background-color 0.15s ease;
+
+  &:hover {
     background-color: ${({ theme }) => theme.colors.neutral100};
   }
 `;
@@ -31,19 +49,22 @@ export const HoursPreview = ({ value }: HoursPreviewProps) => {
         </Typography>
 
         <Box paddingTop={2} hasRadius overflow="hidden">
-          {value.regularHours.map((day) => {
+          {value.regularHours.map((day, index) => {
             const dayLabel = formatMessage({
               id: getTrad(`day.short.${day.dayOfWeek}`),
               defaultMessage: day.dayOfWeek.slice(0, 3),
             });
+            const isWeekend = index >= 5;
 
             return (
               <PreviewRow
                 key={day.dayOfWeek}
+                $isOpen={day.isOpen}
+                $isWeekend={isWeekend}
                 justifyContent="space-between"
                 alignItems="center"
-                paddingTop={2}
-                paddingBottom={2}
+                paddingTop={1}
+                paddingBottom={1}
                 paddingLeft={3}
                 paddingRight={3}
               >
@@ -78,20 +99,24 @@ export const HoursPreview = ({ value }: HoursPreviewProps) => {
 
         <Box paddingTop={2}>
           {value.specialHours.length === 0 ? (
-            <Typography variant="pi" textColor="neutral400">
-              {formatMessage({
-                id: getTrad('preview.noSpecialHours'),
-                defaultMessage: 'No special hours defined',
-              })}
-            </Typography>
+            <Flex gap={2} alignItems="center" paddingLeft={3} paddingTop={1}>
+              <Information width={16} height={16} />
+              <Typography variant="pi" textColor="neutral400">
+                {formatMessage({
+                  id: getTrad('preview.noSpecialHours'),
+                  defaultMessage: 'No special hours defined',
+                })}
+              </Typography>
+            </Flex>
           ) : (
             value.specialHours.map((entry, index) => (
-              <Flex
+              <SpecialPreviewRow
                 key={index}
+                $isOpen={entry.isOpen}
                 justifyContent="space-between"
                 alignItems="center"
-                paddingTop={2}
-                paddingBottom={2}
+                paddingTop={1}
+                paddingBottom={1}
                 paddingLeft={3}
                 paddingRight={3}
               >
@@ -119,7 +144,7 @@ export const HoursPreview = ({ value }: HoursPreviewProps) => {
                     {formatMessage({ id: getTrad('closed'), defaultMessage: 'Closed' })}
                   </Badge>
                 )}
-              </Flex>
+              </SpecialPreviewRow>
             ))
           )}
         </Box>

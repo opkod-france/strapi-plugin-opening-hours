@@ -16,6 +16,7 @@ describe('DayRow', () => {
   const defaultProps = {
     dayIndex: 0,
     disabled: false,
+    isWeekend: false,
     onToggle: jest.fn(),
     onUpdateSlot: jest.fn(),
     onAddSlot: jest.fn(),

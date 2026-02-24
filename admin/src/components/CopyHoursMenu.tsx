@@ -20,16 +20,16 @@ export const CopyHoursMenu = ({ regularHours, disabled, onCopy }: CopyHoursMenuP
   if (disabled) return null;
 
   return (
-    <Box paddingTop={3}>
+    <Box paddingTop={2}>
       <Divider />
       {!expanded ? (
-        <Box paddingTop={3}>
+        <Box paddingTop={2}>
           <Button variant="tertiary" onClick={() => setExpanded(true)} size="S">
             {formatMessage({ id: getTrad('copyHours'), defaultMessage: 'Copy hours from' })}...
           </Button>
         </Box>
       ) : (
-        <Box paddingTop={3}>
+        <Box paddingTop={2}>
           <Typography variant="pi" fontWeight="bold" textColor="neutral600">
             {formatMessage({ id: getTrad('copyHours'), defaultMessage: 'Copy hours from' })}
           </Typography>
@@ -66,7 +66,7 @@ export const CopyHoursMenu = ({ regularHours, disabled, onCopy }: CopyHoursMenuP
               onClick={() => setExpanded(false)}
               size="S"
             >
-              Cancel
+              {formatMessage({ id: getTrad('cancel'), defaultMessage: 'Cancel' })}
             </Button>
           </Flex>
         </Box>
