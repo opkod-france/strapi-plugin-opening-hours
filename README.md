@@ -39,6 +39,48 @@ This plugin adds an **Opening Hours** custom field to Strapi's Content-Type Buil
 - **Schema.org compatible** — JSON output follows `OpeningHoursSpecification`
 - **Strapi Design System** — built entirely with native Strapi components
 
+## Screenshots
+
+### Regular Hours
+
+Set opening and closing times for each day of the week, with per-day open/closed toggles.
+
+<p align="center">
+  <img src="assets/regular-hours.png" alt="Regular Hours" width="700" />
+</p>
+
+### Split Shifts
+
+Add multiple time slots per day to handle lunch breaks, split shifts, or varying schedules.
+
+<p align="center">
+  <img src="assets/time-slots.png" alt="Split Shifts" width="700" />
+</p>
+
+### Copy Hours
+
+Quickly replicate one day's schedule to all weekdays or all days at once.
+
+<p align="center">
+  <img src="assets/copy-hours.png" alt="Copy Hours" width="700" />
+</p>
+
+### Special Hours
+
+Define named overrides for holidays or special events, with date ranges and open/closed status.
+
+<p align="center">
+  <img src="assets/special-hours.png" alt="Special Hours" width="700" />
+</p>
+
+### Preview
+
+A read-only summary of the full schedule, including both regular and special hours.
+
+<p align="center">
+  <img src="assets/preview.png" alt="Preview" width="700" />
+</p>
+
 ## Quick Start
 
 ### 1. Install
