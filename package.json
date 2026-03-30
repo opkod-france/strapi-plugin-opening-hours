@@ -76,7 +76,7 @@
     "semantic-release": "^25.0.3",
     "styled-components": "^6.0.0",
     "ts-jest": "^29.4.6",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.2"
   },
   "peerDependencies": {
     "@strapi/strapi": "^5.0.0",
